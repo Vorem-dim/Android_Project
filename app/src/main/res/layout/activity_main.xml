@@ -139,6 +139,7 @@
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/black"
         android:fontFamily="monospace"
+        android:onClick="onMenuClick"
         android:text="@string/menu_main"
         android:textColor="@color/white"
         android:textSize="@dimen/in_sp14"
