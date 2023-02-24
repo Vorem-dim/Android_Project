@@ -1,6 +1,9 @@
 package com.example.sushiandpizza;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "The button \"Log in to your profile\" is pressed");
+                onProfileClick(view);
             }
         });
 
@@ -46,6 +51,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (data == null) {
+            return;
+        } String str = data.getStringExtra("message");
+        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
+    }
+
+    public void onProfileClick(View view) {
+        Intent intent = new Intent(this, LogInActivity.class);
+        intent.putExtra("message", getResources().getString(R.string.profile_line));
+        startActivityForResult(intent, 1);
+    }
     public void onMenuClick(View view) {
         Log.i(TAG, "The button \"Open menu\" is pressed");
     }
