@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sushi and Pizza</string>
+    <string name="info_main">Sushi and pizza delivery is an online sushi and pizza ordering service in Moscow.</string>
+    <string name="time_main">Order acceptance time: from 9:00 to 23:00</string>
+    <string name="telephone_main">Phone +7 (977) 927-83-40</string>
+    <string name="menu_main">Open the menu</string>
+    <string name="profile_main">Log in to your profile</string>
+    <string name="registration_main">Registration</string>
+    <string name="profile_line">Enter your username and password</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="profile_login">Login</string>
+</resources>

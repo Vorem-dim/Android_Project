@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sushi and Pizza</string>
+    <string name="info_main">Lieferung von Sushi und Pizza — Online-Bestellung von Sushi und Pizza in Moskau.</string>
+    <string name="time_main">Zeit für die Bestellung: von 9:00 bis 23:00 Uhr</string>
+    <string name="telephone_main">Telefon +7 (977) 927-83-40</string>
+    <string name="menu_main">Menü öffnen</string>
+    <string name="profile_main">In Ihr Profil einloggen</string>
+    <string name="registration_main">Eintragung</string>
+    <string name="profile_line">Geben Sie Ihren Benutzernamen und Ihr Passwort ein</string>
+    <string name="login">Anmeldung</string>
+    <string name="password">Passwort</string>
+    <string name="profile_login">Login</string>
+</resources>
