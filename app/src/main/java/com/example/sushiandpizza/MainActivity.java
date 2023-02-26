@@ -1,8 +1,11 @@
 package com.example.sushiandpizza;
 
-import androidx.annotation.Nullable;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -14,8 +17,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG = "MainActivity";
 
+    ActivityResultLauncher<Intent> StartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == LogInActivity.RESULT_OK){
+                        Intent intent = result.getData();
+                        String str = intent.getStringExtra("message");
+                        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
         text.setText(str);
 
         ImageView image = (ImageView)findViewById(R.id.Pizza_main);
-        Drawable draw = getResources().getDrawable(R.drawable.pizza_main_screen);
+        Drawable draw = getResources().getDrawable(R.drawable.pizza_main_screen, getTheme());
         image.setImageDrawable(draw);
 
         image = (ImageView)findViewById(R.id.Sushi_main);
-        draw = getResources().getDrawable(R.drawable.sushi_main_screen);
+        draw = getResources().getDrawable(R.drawable.sushi_main_screen, getTheme());
         image.setImageDrawable(draw);
 
         Button profile = (Button)findViewById(R.id.Profile);
@@ -51,21 +68,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (data == null) {
-            return;
-        } String str = data.getStringExtra("message");
-        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
-    }
-
     public void onProfileClick(View view) {
         Intent intent = new Intent(this, LogInActivity.class);
         intent.putExtra("message", getResources().getString(R.string.profile_line));
-        startActivityForResult(intent, 1);
+        StartForResult.launch(intent);
     }
+
     public void onMenuClick(View view) {
         Log.i(TAG, "The button \"Open menu\" is pressed");
     }

@@ -2,6 +2,7 @@ package com.example.sushiandpizza;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 public class LogInActivity extends AppCompatActivity {
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +24,11 @@ public class LogInActivity extends AppCompatActivity {
         text.setText(str);
 
         ImageView image = (ImageView)findViewById(R.id.Pizza_LogIn);
-        Drawable draw = getResources().getDrawable(R.drawable.pizza_main_screen);
+        Drawable draw = getResources().getDrawable(R.drawable.pizza_main_screen, getTheme());
         image.setImageDrawable(draw);
 
         image = (ImageView)findViewById(R.id.Sushi_LogIn);
-        draw = getResources().getDrawable(R.drawable.sushi_main_screen);
+        draw = getResources().getDrawable(R.drawable.sushi_main_screen, getTheme());
         image.setImageDrawable(draw);
 
         Bundle arguments = getIntent().getExtras();
